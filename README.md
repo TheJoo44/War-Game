@@ -17,7 +17,7 @@ War Browser Card Game
   4. player score
   5. computer score
   6. round winner
-  7. win/lose/tie
+  7. game winner win/lose/tie
 3. cache elements
   1. player deck
   2. computer deck
@@ -35,9 +35,10 @@ War Browser Card Game
   1. Shuffle Cards - randomize 4 sets of 13 cards into an array matching suits to values
   2. Deal Cards - split cards array into player card array and computer card array
   3. Play Cards - on play button click deal the first card value from each array and compare them
-  4. Compare Cards - compare the number value of cards to find a round winner 
-  5. Round Winner - update the round winner variable
-  6. Game Winner - after all cards have been played compare player score and computer score to determine game winner
+      1. call Compare Cards - compare the number value of cards to find a round winner 
+      2. call Round Winner - update the round winner variable
+      3. call Game Winner - after all cards have been played compare player score and computer score to determine game winner
+      4. call render function
   7. Replay Button - reshuffle and deal all cards out to both players, reset scores, set round winner to none
   8. Initializer Function - set up game
   9. Render Function - check matches, check round/game winner, declare round/game winner 
