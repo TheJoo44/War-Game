@@ -3,6 +3,12 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+  --bord-color: white;
+  --word-color: red;
+  --card-border: #2F2E22;
+}
+
 header {
   height: 200px;
   width: 35%;
@@ -12,6 +18,7 @@ header {
 
 h1 {
   font-size: 100px;
+  color: red;
 }
 
 body{
@@ -19,7 +26,10 @@ body{
   width: 100%;
   align-items: center;
   justify-items: center;
-  background: url("War-Game/imgs/battlefield3.jpg");
+  background: url("imgs/battlefield3.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 #container {
@@ -32,7 +42,7 @@ body{
 }
 
 #round-winner {
-  border: 2px solid black;
+  border: 2px solid var(--bord-color);
   grid-area: 1 / 5;
   height: 75px;
   width: 150px;
@@ -42,79 +52,99 @@ body{
 }
 #round-winner p {
   margin: 10px;
+  color: var(--word-color);
 }
 #round-winner p:first-child{
   text-decoration: underline;
+  color: var(--word-color);
 }
 
 .player-deck {
-  border: 2px solid black;
+  border: 2px solid var(--card-border);
+  border-radius: 15%;
   height: 75%;
   width: 75%;
   grid-area: 2 / 3;
   justify-self: center;
   align-self: center;
+  background-image: url("imgs/humdeck2.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .player-card {
-  border: 2px solid black;
+  border: 2px solid var(--card-border);
+  border-radius: 15%;
   grid-area:  2 / 4;
   height: 50%;
   width: 75%;
   justify-self: center;
   align-self: center;
+  color: var(--word-color);
 }
 
 .player-score {
-  border: 2px solid black;
+  border: 2px solid var(--bord-color);
   height: 60px;
   width: 100px;
   grid-area: 3 / 3;
   text-align: center;
   justify-self: center;
   align-self: center;
+  color: var(--word-color);
 }
 
 .player-score p {
   margin: 5px;
+  color: var(--word-color);
 }
 .player-score p:first-child{
   text-decoration: underline;
+  color: var(--word-color);
 }
 
 .computer-deck {
-  border: 2px solid black;
+  border: 2px solid var(--card-border);
+  border-radius: 15%;
   height: 75%;
   width: 75%;
   grid-area: 2 / 7;
   justify-self: center;
   align-self: center;
+  background-image: url("imgs/gobdeck.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .computer-card {
-  border: 2px solid black;
+  border: 2px solid var(--card-border);
+  border-radius: 15%;
   grid-area:  2 / 6;
   height: 50%;
   width: 75%;
   justify-self: center;
   align-self: center;
+  color: var(--word-color);
 }
 
 .computer-score {
-  border: 2px solid black;
+  border: 2px solid var(--bord-color);
   height: 60px;
   width: 100px;
   text-align: center;
   grid-area: 3 / 7;
   justify-self: center;
   align-self: center;
+  color: var(--word-color);
 }
 
 .computer-score p {
   margin: 5px;
+  color: var(--word-color);
 }
 .computer-score p:first-child{
   text-decoration: underline;
+  color: var(--word-color);
 }
 
 .play-button {
