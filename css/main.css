@@ -1,7 +1,7 @@
-/* *, *:before, *:after {
+*, *:before, *:after {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-} */
+}
 
 header {
   height: 200px;
@@ -19,6 +19,7 @@ body{
   width: 100%;
   align-items: center;
   justify-items: center;
+  background: url("War-Game/imgs/battlefield3.jpg");
 }
 
 #container {
