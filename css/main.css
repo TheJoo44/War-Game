@@ -161,16 +161,19 @@ body{
   justify-self: center;
   align-self: center;
   padding: 20px 40px;
-  border: 3px groove #938361;
+  border: 3px groove #ad986b;
   border-radius: 15%;
-  background-color: #7B6E51;
-
+  background-color: rgb(133, 115, 76);
 }
 
 .replay-button {
   grid-area: 3 / 5;
   justify-self: center;
   align-self: center;
+  padding: 20px 40px;
+  border: 3px groove #ad986b;
+  border-radius: 15%;
+  background-color: rgb(133, 115, 76);
 }
 
 .bgm-toggle {
