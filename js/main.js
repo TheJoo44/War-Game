@@ -3,6 +3,8 @@ const cardNums = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
 const cardSuits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'];
 let player;
 let computer;
+const battleSound = 'http://www.freesound.org/data/previews/42/42106_70164-lq.mp3';
+
 
 
 /*----------App's State (Variables)-----------*/
@@ -35,14 +37,16 @@ const replayBtn = document.querySelector('.replay-button')
 
 // Audio Elements
 const bgmBtn = document.querySelector('.bgm-toggle')
+const bkgdMusic = document.querySelector('#bkgd-music')
 const sfxBtn = document.querySelector('.sfx-toggle')
+const sfxPlayer = new Audio();
 
-
+bkgdMusic.volume = .1;
 /*----------Event Listeners--------------*/
 playBtn.addEventListener('click', playCards);
 replayBtn.addEventListener('click', replay);
-bgmBtn.addEventListener('click', bgm);
-sfxBtn.addEventListener('click', sfx);
+bgmBtn.addEventListener('click', bgmOnOff);
+sfxBtn.addEventListener('click', sfxOnOff);
 
 
 /*----------Functions--------------*/
@@ -130,7 +134,8 @@ function dealComputerCards() {
 // Play button function
 function playCards() {
   console.log('Fight!')
-
+  playSounds()
+    
   // compareCards()
   // roundWinner()
   // gameWinner()
@@ -157,12 +162,21 @@ function replay() {
   console.log('Rematch')
 }
 
-// Background music on/off
-function bgm() {
-  console.log('Music On/Off')
+// Plays sound when battle button is clicked. Called in playCards()(WORKING)
+function playSounds() {
+  sfxPlayer.src = battleSound;
+  sfxPlayer.play();
 }
 
+// Background music on/off(NOT WORKING: music won't autoplay, button click will start music, but not stop it.)
+function bgmOnOff() {
+  console.log('Music On/Off')
+  bgmBtn.click ? bkgdMusic.play() : bkgdMusic.pause();
+}
+
+
 // SoundFX on/off
-function sfx() {
-  console.log('SFX On/Off')
+function sfxOnOff(name) {
+  console.log('SFX On/Off');
+
 }

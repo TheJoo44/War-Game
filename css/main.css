@@ -180,12 +180,18 @@ body{
   grid-area: 3 / 1;
   align-self: center;
   justify-self: center;
+  background-image: url('images/speaker_loud.png');
+  background-position: center;
+  background-size: cover;
 }
-    
+
 .sfx-toggle {
   grid-area: 3 / 2;
   align-self: center;
   justify-self: center;
+  background-image: url('images/speaker_loud.png');
+  background-position: center;
+  background-size: cover;
 }
 
 .win-msg {
