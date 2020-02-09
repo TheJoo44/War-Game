@@ -40,6 +40,12 @@ War Browser Card Game
         2. call Round Winner - update the round winner variable
         3. call Game Winner - after all cards have been played compare player score and computer score to determine game winner
         4. call render function
+<<<<<<< HEAD
     5. Replay Button - reshuffle and deal all cards out to both players, reset scores, set round winner to none
     6. Initializer Function - set up game
     7. Render Function - check matches, check round/game winner, declare round/game winner 
+=======
+    7. Replay Button - reshuffle and deal all cards out to both players, reset scores, set round winner to none
+    8. Initializer Function - set up game
+    9. Render Function - check matches, check round/game winner, declare round/game winner 
+>>>>>>> 41cbdfde429e90aa934194be4b2d88214967fb4b
