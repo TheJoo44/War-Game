@@ -1,7 +1,7 @@
 # War-Game
 War Browser Card Game
 
-![Image Description](./css/imgs/War-Wireframe.jpg)
+![Image Description](./imgs/War-Wireframe.jpg)
 
 ## Pseudocode
 
