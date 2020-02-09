@@ -6,7 +6,7 @@ let computer;
 
 
 /*----------App's State (Variables)-----------*/
-let shuffledDeck;
+let shuffledDeck = [];
 let playerDeck = [];
 let playCard;
 let playerScore;
@@ -58,12 +58,12 @@ function init() {
 }
 
 //  Combines cardNums and cardSuits arrays
-class Card {
-  constructor(cardNum, cardSuit) {
-    this.cardNum = cardNum;
-    this.cardSuit = cardSuit;
-  }
-}
+// class Card {
+//   constructor(cardNum, cardSuit) {
+//     this.cardNum = cardNum;
+//     this.cardSuit = cardSuit;
+//   }
+// }
 // creates new card object
 // let card = new Card(cardNums, cardSuits)
 // console.log(card)
@@ -72,44 +72,45 @@ class Card {
 class Deck {
   constructor() {
     // deck is the name of the new array
-    this.deck = []
+    this.deck = [];
   }
-// Assigns card values to suits
+  // Assigns card values to suits
   newDeck(cardNums, cardSuits) {
     // loops through cardSuits array
     for (let i = 0; i < cardSuits.length; i++) {
       // loops through cardNums array
       for (let it = 0; it < cardNums.length; it++){
         // pushes the num/suits of each new card to the deck array
-        this.deck.push(new Card(cardNums[it], cardSuits[i]));
+        // this.deck.push(new Card(cardNums[it], cardSuits[i]));
+        this.deck.push(`${cardNums[it]} of ${cardSuits[i]}`);
       }
     }
     return this.deck;
   }
 }
 // assigns the newly created deck array to the deck variable
-let deck = new Deck()
+let deck1 = new Deck();
 // calls the function to create the newDeck inside the deck array
-deck.newDeck(cardNums, cardSuits)
+deck1.newDeck(cardNums, cardSuits);
 
-// Shuffles the cards of the new deck
-// function shuffleDeck(array) {
-//   let curIdx = deck.length, tempValue, rdmIdx;
+// Shuffles the cards of the new deck(Not Working)
+function shuffleDeck() {
+  const deck = this;
+  let m = deck.length;
+  let i;
   
-//   while ( 0 !== curIdx) {
-//   // picks the index of a random card in deck array
-//   let rdmIdx = Math.floor(Math.random() * curIdx);
-//   curIdx -= 1;
+  while (m) {
+    // picks the index of a random card in deck array
+    i = Math.floor(Math.random() * m--);
+    deck[m] = deck[i];
+    deck[i] = deck[m];
+    // deck1[m] = shuffledDeck;
+  }
+  return this;
+}
 
-//   tempValue = deck[curIdx];
-//   deck[curIdx] = deck[rdmIdx];
-//   deck[rdmIdx] = tempValue
-//   }
-//   return shuffledDeck;
-// }
-
-// shuffleDeck();
-// console.log(shuffledDeck);
+// deck1.shuffleDeck();
+console.log(deck1);
 
 
 // function dealCards() {
@@ -125,21 +126,21 @@ function playCards() {
   // gameWinner()
 }
 
-// function compareCards() {
+function compareCards() {
 
-// }
+}
 
-// function rndWinner() {
+function rndWinner() {
 
-// }
+}
 
-// function gmWinner() {
+function gmWinner() {
 
-// }
+}
 
-// function render() {
+function render() {
 
-// }
+}
 
 // Replay button function
 function replay() {

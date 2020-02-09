@@ -1,7 +1,7 @@
 # War-Game
 War Browser Card Game
 
-![Image Description](./imgs/War-Wireframe.jpg)
+![Image Description](./css/imgs/War-Wireframe.jpg)
 
 ## Pseudocode
 
@@ -28,17 +28,18 @@ War Browser Card Game
     7. reset button
     8. card images
 4. event listeners
-    1. play button click
-    2. reset button click
-    3. audio button click
+    1. play button click(done)
+    2. reset button click(done)
+    3. audio button click(done)
 5. write functions
-    1. Shuffle Cards - randomize 4 sets of 13 cards into an array matching suits to values
-    2. Deal Cards - split cards array into player card array and computer card array
-    3. Play Cards - on play button click deal the first card value from each array and compare them
+    1. Make Deck - combine the numbers and suits arrays into a deck(done)
+    2. Shuffle Cards - randomize 4 sets of 13 cards into an array matching suits to values
+    3. Deal Cards - split cards array into player card array and computer card array
+    4. Play Cards - on play button click deal the first card value from each array and compare them
         1. call Compare Cards - compare the number value of cards to find a round winner 
         2. call Round Winner - update the round winner variable
         3. call Game Winner - after all cards have been played compare player score and computer score to determine game winner
         4. call render function
-    7. Replay Button - reshuffle and deal all cards out to both players, reset scores, set round winner to none
-    8. Initializer Function - set up game
-    9. Render Function - check matches, check round/game winner, declare round/game winner 
+    5. Replay Button - reshuffle and deal all cards out to both players, reset scores, set round winner to none
+    6. Initializer Function - set up game
+    7. Render Function - check matches, check round/game winner, declare round/game winner 
