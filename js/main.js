@@ -4,15 +4,18 @@ const cardSuits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'];
 let player;
 let computer;
 const battleSound = '/Users/jeremybirnbaum/code/projects/War-Game/audio/swordclash01.mp3';
-
+let Jack = 11;
+let Queen = 12;
+let King = 13;
+let Ace = 14;
 
 
 /*----------App's State (Variables)-----------*/
 let playerDeck = [];
-let playerCard;
+let playerCard = [];
 let playerScore;
 let computerDeck = [];
-let computerCard;
+let computerCard = [];
 let computerScore;
 let roundWinner;
 let gameWinner;
@@ -43,6 +46,7 @@ const sfxBtn = document.querySelector('.sfx-toggle')
 const sfxPlayer = new Audio();
 
 bkgdMusic.volume = .1;
+
 /*----------Event Listeners--------------*/
 playBtn.addEventListener('click', playCards);
 replayBtn.addEventListener('click', replay);
@@ -118,7 +122,7 @@ function dealPlayerCards() {
 }
 dealPlayerCards()
 
-// Deals 26 cards from the shuffledDeck1 array out to the computerDeck(WORKING)
+// // Deals 26 cards from the shuffledDeck1 array out to the computerDeck(WORKING)
 function dealComputerCards() {
   while (computerDeck.length < 26) {
   computerDeck.push(shuffledDeck1.pop())
@@ -127,36 +131,63 @@ function dealComputerCards() {
 }
 dealComputerCards();
 
+function playPlayerCard() {
+  while (playerDeck > 0) {
+    playerCard.push(playerDeck.shift())
+  }
+  return playerCard;
+}
+console.log(playerCard)
+
+function playComputerCard() {
+  while (computerDeck > 0) {
+    computerCard.push(computerDeck.shift())
+  }
+  return computerCard;
+}
+console.log(computerCard)
+
+// compares the value of each card(NOT TESTED)
+function compareCards() {
+  if (playerCard === computerCard) {
+    playPlayerCard * 4;
+    playComputerCard * 4;
+    compareCards();
+  } else if (playerCard > computerCard) {
+    playerScore++;
+    computerScore--
+  } else if (computerCard > playerCard){
+    computerScore++;
+    playerScore--;
+  }
+}
+
+function rndWinner() {
+  
+}
+
+function gmWinner() {
+  
+}
+
 // Play button function(Click-WORKING, Sounds-WORKING)
 function playCards() {
-  console.log('Fight!')
-  playSounds()
-    
+  playSounds();
+  playPlayerCard();
+  playComputerCard();
   // compareCards()
   // roundWinner()
   // gameWinner()
 }
 
-function compareCards() {
-
-}
-
-function rndWinner() {
-
-}
-
-function gmWinner() {
-
-}
-
 function render() {
-
+  
 }
 
 // Replay button function
 function replay() {
   console.log('Rematch')
-  init()
+  // init()
 }
 
 // Plays sound when battle button is clicked. Called in playCards()(WORKING)
@@ -176,6 +207,6 @@ function bgmOnOff() {
 // SoundFX on/off
 function sfxOnOff(name) {
   console.log('SFX On/Off');
-  sfxPlay ? battleSound.pause() : battleSound.play();
-  sfxPlay = !sfxPlay;
+  // sfxPlay ? battleSound.pause() : battleSound.play();
+  // sfxPlay = !sfxPlay;
 }
