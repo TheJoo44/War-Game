@@ -17,7 +17,7 @@ font-family: 'Cinzel Decorative', cursive; */
 
 header {
   height: 125px;
-  width: 60%;
+  width: 100%;
   text-align: center;
   margin: 0 auto;
 }
@@ -90,6 +90,8 @@ body{
   justify-self: center;
   align-self: center;
   color: var(--word-color);
+  border: 3px groove #ad986b;
+  background-color: rgb(133, 115, 76);
 }
 
 .player-score {
@@ -107,6 +109,7 @@ body{
   margin: 5px;
   color: var(--word-color);
 }
+
 .player-score p:first-child{
   text-decoration: underline;
   color: var(--word-color);
@@ -134,6 +137,8 @@ body{
   justify-self: center;
   align-self: center;
   color: var(--word-color);
+  border: 3px groove #ad986b;
+  background-color: rgb(133, 115, 76);
 }
 
 .computer-score {
@@ -160,11 +165,22 @@ body{
   grid-area: 2 / 5;
   justify-self: center;
   align-self: center;
-  padding: 20px 40px;
+  padding: 5px 10px;
   border: 3px groove #ad986b;
   border-radius: 15%;
   background-color: rgb(133, 115, 76);
+  /* background-image: url("imgs/main.png");
+  background-position: center;
+  background-size: cover; */
 }
+
+.play-button p {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--word-color);
+  font-family: 'Lacquer', sans-serif;
+}
+
 
 .replay-button {
   grid-area: 3 / 5;
@@ -180,18 +196,24 @@ body{
   grid-area: 3 / 1;
   align-self: center;
   justify-self: center;
-  background-image: url('images/speaker_loud.png');
+  height: 50px;
+  width: 50px;
+  background-image: url("imgs/speakerloud.png");
   background-position: center;
   background-size: cover;
+  color: var(--word-color);
 }
 
 .sfx-toggle {
   grid-area: 3 / 2;
   align-self: center;
   justify-self: center;
-  background-image: url('images/speaker_loud.png');
+  height: 50px;
+  width: 50px;
+  background-image: url("imgs/speakerloud.png");
   background-position: center;
   background-size: cover;
+  color: var(--word-color);
 }
 
 .win-msg {

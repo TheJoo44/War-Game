@@ -3,20 +3,21 @@ const cardNums = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
 const cardSuits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'];
 let player;
 let computer;
-const battleSound = 'http://www.freesound.org/data/previews/42/42106_70164-lq.mp3';
+const battleSound = '/Users/jeremybirnbaum/code/projects/War-Game/audio/swordclash01.mp3';
 
 
 
 /*----------App's State (Variables)-----------*/
-let shuffledDeck = [];
 let playerDeck = [];
-let playCard;
+let playerCard;
 let playerScore;
 let computerDeck = [];
-let compCard;
+let computerCard;
 let computerScore;
 let roundWinner;
 let gameWinner;
+let bgmPlay = false
+let sfxPlay = false
 
 
 /*---------Cached Elements--------------*/
@@ -51,26 +52,16 @@ sfxBtn.addEventListener('click', sfxOnOff);
 
 /*----------Functions--------------*/
 
-
-function init() {
-  scores = {
-    p: 0,
-    c: 0
-  }
-
-
-}
-
 //  Combines cardNums and cardSuits arrays
-// class Card {
-//   constructor(cardNum, cardSuit) {
-//     this.cardNum = cardNum;
-//     this.cardSuit = cardSuit;
-//   }
-// }
+class Card {
+  constructor(cardNum, cardSuit) {
+    this.cardNum = cardNum;
+    this.cardSuit = cardSuit;
+  }
+}
 // creates new card object
-// let card = new Card(cardNums, cardSuits)
-// console.log(card)
+let card = new Card(cardNums, cardSuits)
+
 
 // Makes a new deck
 class Deck {
@@ -80,13 +71,13 @@ class Deck {
   }
   // Assigns card values to suits
   newDeck(cardNums, cardSuits) {
-  // loops through cardSuits array
+    // loops through cardSuits array
     for (let i = 0; i < cardSuits.length; i++) {
-    // loops through cardNums array
+      // loops through cardNums array
       for (let it = 0; it < cardNums.length; it++){
-      // pushes the num/suits of each new card to the deck array
-        // this.deck.push(new Card(cardNums[it], cardSuits[i]));
-        this.deck.push(`${cardNums[it]} of ${cardSuits[i]}`);
+        // pushes the num/suits of each new card to the deck array
+        this.deck.push(new Card(cardNums[it], cardSuits[i]));
+        // this.deck.push(`${cardNums[it]} of ${cardSuits[i]}`);
       }
     }
     return this.deck;
@@ -97,41 +88,46 @@ let deck1 = new Deck();
 // calls the function to create the newDeck inside the deck array
 deck1.newDeck(cardNums, cardSuits);
 
-// Shuffles the cards of the new deck(Not Working)
-function shuffleDeck() {
-  let ctr = this.deck1.length;
-  let temp;
-  let i;
-  
-  while (ctr) {
-    // picks the index of a random card in deck array
-    i = Math.floor(Math.random() * ctr--);
-    temp = this.deck1[ctr];
-    this.deck1[ctr] = this.deck1[i];
-    this.deck1[i] = temp;
+// Defins the shuffledDeck array
+let shuffledDeck1;
+
+function init() {
+  scores = {
+    p: 0,
+    c: 0
   }
-  return this.deck1;
+  dealPlayerCards()
+  dealComputerCards()
 }
 
-// shuffleDeck(deck1);
-// console.log(deck.shffleDeck());
+// defines shuffledDeck1 as the shuffleDeck() with deck1.deck as a parameter
+shuffledDeck1 = shuffleDeck(deck1.deck)
 
+// Shuffles the cards of the new deck(WORKING)
+function shuffleDeck(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+// console.log(shuffleDeck(deck1.deck));
 
+// Deals 26 cards from the shuffledDeck1 array out to the playerDeck(WORKING)
 function dealPlayerCards() {
-  while (playerDeck.length <= 26) {
-    playerDeck.push(this.deck1.pop())
+  while (playerDeck.length < 26) {
+    playerDeck.push(shuffledDeck1.pop())
   }
   return playerDeck;
 }
+dealPlayerCards()
 
+// Deals 26 cards from the shuffledDeck1 array out to the computerDeck(WORKING)
 function dealComputerCards() {
-  while (computerDeck.length <= 26) {
-  computerDeck.push(this.deck1.pop())
+  while (computerDeck.length < 26) {
+  computerDeck.push(shuffledDeck1.pop())
   }
   return computerDeck;
 }
+dealComputerCards();
 
-// Play button function
+// Play button function(Click-WORKING, Sounds-WORKING)
 function playCards() {
   console.log('Fight!')
   playSounds()
@@ -160,6 +156,7 @@ function render() {
 // Replay button function
 function replay() {
   console.log('Rematch')
+  init()
 }
 
 // Plays sound when battle button is clicked. Called in playCards()(WORKING)
@@ -170,13 +167,15 @@ function playSounds() {
 
 // Background music on/off(NOT WORKING: music won't autoplay, button click will start music, but not stop it.)
 function bgmOnOff() {
-  console.log('Music On/Off')
-  bgmBtn.click ? bkgdMusic.play() : bkgdMusic.pause();
+  console.log('Music On/Off');
+  bgmPlay ? bkgdMusic.pause() : bkgdMusic.play();
+  bgmPlay = !bgmPlay;
 }
 
 
 // SoundFX on/off
 function sfxOnOff(name) {
   console.log('SFX On/Off');
-
+  sfxPlay ? battleSound.pause() : battleSound.play();
+  sfxPlay = !sfxPlay;
 }
