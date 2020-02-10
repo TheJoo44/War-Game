@@ -51,7 +51,7 @@ body{
 }
 
 #round-winner {
-  border: 2px solid var(--bord-color);
+  /* border: 2px solid var(--bord-color); */
   grid-area: 1 / 5;
   height: 75px;
   width: 150px;
@@ -62,10 +62,14 @@ body{
 #round-winner p {
   margin: 10px;
   color: var(--word-color);
+  font-family: 'Bangers', cursive;
 }
-#round-winner p:first-child{
+
+#round-winner p:first-child {
   text-decoration: underline;
   color: var(--word-color);
+  font-family: 'Eater', cursive;
+
 }
 
 .player-deck {
@@ -113,6 +117,7 @@ body{
 .player-score p:first-child{
   text-decoration: underline;
   color: var(--word-color);
+  font-family: 'Eater', cursive;
 }
 
 .computer-deck {
@@ -159,6 +164,7 @@ body{
 .computer-score p:first-child{
   text-decoration: underline;
   color: var(--word-color);
+  font-family: 'Eater', cursive;
 }
 
 .play-button {
@@ -190,6 +196,7 @@ body{
   border: 3px groove #ad986b;
   border-radius: 15%;
   background-color: rgb(133, 115, 76);
+  font-family: 'Eater', cursive;
 }
 
 .bgm-toggle {
@@ -224,6 +231,7 @@ body{
   width: 100%;
   align-self: center;
   justify-self: center;
+  display: none;
 }
 
 .win-msg p {
@@ -232,7 +240,6 @@ body{
   text-align: center;
   justify-self: center;
   align-self: center;
-  display: none;
 }
 
 .flip-horz {

@@ -38,6 +38,7 @@ const cScore = document.querySelector('.computer-score');
 const rWinner = document.querySelector('.round-winner')
 const playBtn = document.querySelector('.play-button')
 const replayBtn = document.querySelector('.replay-button')
+const winMsg = document.querySelector('.win-msg')
 
 // Audio Elements
 const bgmBtn = document.querySelector('.bgm-toggle')
@@ -113,6 +114,9 @@ function shuffleDeck(array) {
 }
 // console.log(shuffleDeck(deck1.deck));
 
+
+
+
 // Deals 26 cards from the shuffledDeck1 array out to the playerDeck(WORKING)
 function dealPlayerCards() {
   while (playerDeck.length < 26) {
@@ -131,9 +135,12 @@ function dealComputerCards() {
 }
 dealComputerCards();
 
+
+
+// plays player and computer card each round(NOT WORKING)
 function playPlayerCard() {
   while (playerDeck > 0) {
-    playerCard.push(playerDeck.shift())
+    playerCard.unshift(playerDeck.shift())
   }
   return playerCard;
 }
@@ -141,11 +148,14 @@ console.log(playerCard)
 
 function playComputerCard() {
   while (computerDeck > 0) {
-    computerCard.push(computerDeck.shift())
+    computerCard.unshift(computerDeck.shift())
   }
   return computerCard;
 }
 console.log(computerCard)
+
+
+
 
 // compares the value of each card(NOT TESTED)
 function compareCards() {
@@ -155,10 +165,10 @@ function compareCards() {
     compareCards();
   } else if (playerCard > computerCard) {
     playerScore++;
-    computerScore--
+    // computerScore--;
   } else if (computerCard > playerCard){
     computerScore++;
-    playerScore--;
+    // playerScore--;
   }
 }
 
@@ -166,11 +176,17 @@ function rndWinner() {
   
 }
 
+
+// Show Win/lose Message(NOT TESTED)
 function gmWinner() {
-  
+  if (player === winner) {
+  winMsg.innerText('You Win');
+  } else {
+    winMsg.innerText('You Lose');
+  }
 }
 
-// Play button function(Click-WORKING, Sounds-WORKING)
+// Play button function(Click-WORKING, Sounds-WORKING, Dealing cards NOT WORKING)
 function playCards() {
   playSounds();
   playPlayerCard();
@@ -196,7 +212,7 @@ function playSounds() {
   sfxPlayer.play();
 }
 
-// Background music on/off(NOT WORKING: music won't autoplay, button click will start music, but not stop it.)
+// Background music on/off(NOT WORKING: music won't autoplay, button click will start/stop music.)
 function bgmOnOff() {
   console.log('Music On/Off');
   bgmPlay ? bkgdMusic.pause() : bkgdMusic.play();
