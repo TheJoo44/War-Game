@@ -1,21 +1,18 @@
 /*----------Constants-----------*/
-const cardNums = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
+const cardNums = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 const cardSuits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'];
 let player;
 let computer;
 const battleSound = '/Users/jeremybirnbaum/code/projects/War-Game/audio/swordclash01.mp3';
-let Jack = 11;
-let Queen = 12;
-let King = 13;
-let Ace = 14;
+
 
 
 /*----------App's State (Variables)-----------*/
 let playerDeck = [];
-let playerCard = [];
+let playerCard;
 let playerScore;
 let computerDeck = [];
-let computerCard = [];
+let computerCard;
 let computerScore;
 let roundWinner;
 let gameWinner;
@@ -23,19 +20,21 @@ let bgmPlay = false
 let sfxPlay = false
 
 
+
 /*---------Cached Elements--------------*/
 // Player Elements
 const pDeckEls = document.querySelector('.player-deck');
-const pPlayedCards = document.querySelector('.player-card');
+const pPlayedCard = document.querySelector('.player-card');
 const pScore = document.querySelector('.player-score');
 
 // Computer Elements
 const cDeckEls = document.querySelector('.computer-deck');
-const cPlayedCards = document.querySelector('.computer-card');
+const cPlayedCard = document.querySelector('.computer-card');
 const cScore = document.querySelector('.computer-score');
 
 // Round Elements
 const rWinner = document.querySelector('.round-winner')
+const decRWinner = document.querySelector('.declare-r-winner')
 const playBtn = document.querySelector('.play-button')
 const replayBtn = document.querySelector('.replay-button')
 const winMsg = document.querySelector('.win-msg')
@@ -46,7 +45,9 @@ const bkgdMusic = document.querySelector('#bkgd-music')
 const sfxBtn = document.querySelector('.sfx-toggle')
 const sfxPlayer = new Audio();
 
-bkgdMusic.volume = .1;
+bkgdMusic.volume = .2;
+
+
 
 /*----------Event Listeners--------------*/
 playBtn.addEventListener('click', playCards);
@@ -55,9 +56,11 @@ bgmBtn.addEventListener('click', bgmOnOff);
 sfxBtn.addEventListener('click', sfxOnOff);
 
 
+
+
 /*----------Functions--------------*/
 
-//  Combines cardNums and cardSuits arrays
+//  Combines cardNums and cardSuits arrays (WORKING)
 class Card {
   constructor(cardNum, cardSuit) {
     this.cardNum = cardNum;
@@ -68,7 +71,7 @@ class Card {
 let card = new Card(cardNums, cardSuits)
 
 
-// Makes a new deck
+// Makes a new deck (WORKING)
 class Deck {
   constructor() {
     // deck is the name of the new array
@@ -93,7 +96,7 @@ let deck1 = new Deck();
 // calls the function to create the newDeck inside the deck array
 deck1.newDeck(cardNums, cardSuits);
 
-// Defins the shuffledDeck array
+// Defines the shuffledDeck array
 let shuffledDeck1;
 
 function init() {
@@ -137,44 +140,48 @@ dealComputerCards();
 
 
 
-// plays player and computer card each round(NOT WORKING)
+// plays player and computer card each round(WORKING)
 function playPlayerCard() {
-  while (playerDeck > 0) {
-    playerCard.unshift(playerDeck.shift())
-  }
+    playerCard = playerDeck.shift()
+
   return playerCard;
 }
 console.log(playerCard)
 
 function playComputerCard() {
-  while (computerDeck > 0) {
-    computerCard.unshift(computerDeck.shift())
-  }
-  return computerCard;
+    computerCard = computerDeck.shift()
+  
+    return computerCard;
 }
 console.log(computerCard)
 
 
 
 
-// compares the value of each card(NOT TESTED)
+// compares the value of each card(WORKING)
 function compareCards() {
-  if (playerCard === computerCard) {
-    playPlayerCard * 4;
-    playComputerCard * 4;
+  if (playerCard.cardNum === computerCard.cardNum) {
+    console.log('equal')
+    for (let i = 0; i < 4; i++) {
+      playPlayerCard();
+      playComputerCard();
+    }
     compareCards();
-  } else if (playerCard > computerCard) {
+  } else if (playerCard.cardNum > computerCard.cardNum) {
+    console.log('player')
     playerScore++;
+    decRWinner.innerText = 'Humans';
+    // UPDATE SCORES LOGIC HERE
     // computerScore--;
-  } else if (computerCard > playerCard){
+  } else if (computerCard.cardNum > playerCard.cardNum){
+    console.log('computer')
     computerScore++;
+    decRWinner.innerText = 'Goblins';
     // playerScore--;
   }
 }
 
-function rndWinner() {
-  
-}
+
 
 
 // Show Win/lose Message(NOT TESTED)
@@ -186,13 +193,12 @@ function gmWinner() {
   }
 }
 
-// Play button function(Click-WORKING, Sounds-WORKING, Dealing cards NOT WORKING)
+// Play button function(Click-WORKING, Sounds-WORKING, Dealing-WORKING, Compare-WORKING)
 function playCards() {
   playSounds();
   playPlayerCard();
   playComputerCard();
-  // compareCards()
-  // roundWinner()
+  compareCards();
   // gameWinner()
 }
 
