@@ -13,6 +13,7 @@ font-family: 'Cinzel Decorative', cursive; */
   --bord-color: white;
   --word-color: rgb(170, 2, 2);
   --card-border: rgb(44, 44, 32);
+  --btn-color: #948159;
 }
 
 header {
@@ -94,12 +95,11 @@ body{
   justify-self: center;
   align-self: center;
   color: var(--word-color);
-  border: 3px groove #ad986b;
+  border: 3px groove var(--btn-color);
   background-color: rgb(133, 115, 76);
 }
 
 .player-score {
-  border: 2px solid var(--bord-color);
   height: 60px;
   width: 100px;
   grid-area: 3 / 3;
@@ -112,12 +112,15 @@ body{
 .player-score p {
   margin: 5px;
   color: var(--word-color);
+  font-size: 35px;
+  font-weight: 800;
+  font-family: 'Bangers', cursive;
 }
 
 .player-score p:first-child{
   text-decoration: underline;
   color: var(--word-color);
-  font-family: 'Eater', cursive;
+  font-family: 'Eater', cursive !important;
 }
 
 .computer-deck {
@@ -142,12 +145,11 @@ body{
   justify-self: center;
   align-self: center;
   color: var(--word-color);
-  border: 3px groove #ad986b;
+  border: 3px groove var(--btn-color);
   background-color: rgb(133, 115, 76);
 }
 
 .computer-score {
-  border: 2px solid var(--bord-color);
   height: 60px;
   width: 100px;
   text-align: center;
@@ -155,16 +157,19 @@ body{
   justify-self: center;
   align-self: center;
   color: var(--word-color);
+  font-size: 35px;
+  font-weight: 800;
 }
 
 .computer-score p {
   margin: 5px;
   color: var(--word-color);
+  font-family: 'Bangers', cursive;
 }
 .computer-score p:first-child{
   text-decoration: underline;
   color: var(--word-color);
-  font-family: 'Eater', cursive;
+  font-family: 'Eater', cursive !important;
 }
 
 .play-button {
@@ -172,7 +177,7 @@ body{
   justify-self: center;
   align-self: center;
   padding: 5px 10px;
-  border: 3px groove #ad986b;
+  border: 3px groove var(--btn-color);
   border-radius: 15%;
   background-color: rgb(133, 115, 76);
   /* background-image: url("imgs/main.png");
@@ -193,10 +198,11 @@ body{
   justify-self: center;
   align-self: center;
   padding: 20px 40px;
-  border: 3px groove #ad986b;
+  border: 3px groove var(--btn-color);
   border-radius: 15%;
   background-color: rgb(133, 115, 76);
   font-family: 'Eater', cursive;
+  color: var(--word-color);
 }
 
 .bgm-toggle {
@@ -211,7 +217,7 @@ body{
   color: var(--word-color);
 }
 
-.sfx-toggle {
+/* .sfx-toggle {
   grid-area: 3 / 2;
   align-self: center;
   justify-self: center;
@@ -221,7 +227,7 @@ body{
   background-position: center;
   background-size: cover;
   color: var(--word-color);
-}
+} */
 
 .win-msg {
   grid-row: 1 / 4;
@@ -231,15 +237,18 @@ body{
   width: 100%;
   align-self: center;
   justify-self: center;
-  display: none;
 }
 
-.win-msg p {
+.winLose {
   font-size: 115px;
   letter-spacing: 30px;
+  color: var(--word-color);
   text-align: center;
   justify-self: center;
   align-self: center;
+  z-index: 10;
+  position: relative;
+  font-family: 'Cinzel Decorative', cursive;
 }
 
 .flip-horz {
