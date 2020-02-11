@@ -25,7 +25,10 @@
   /* Default sizes for cards (size based off the font). */
   /* Optional styles for cards: borderless and drop shadow. */
   /* Not a card, but a card-shaped outline to represent a
-     droppable place, like an empty pile. */ }
+     droppable place, like an empty pile. */ 
+  transform: rotate(90deg);
+    }
+
   .card.small {
     font-size: 12px; }
   .card.large {
@@ -39,12 +42,15 @@
   .card.outline {
     background-image: none;
     background-color: rgba(195, 195, 195, 0.5);
-    border: 0.15em dashed #daa520; }
+    border: 0.15em dashed #daa520; 
+    
+  }
 
 .card.diamonds.A,
 .card.dA,
 .card.♦A {
-  background-image: url("../images/diamonds/diamonds-A.svg"); }
+  background-image: url("../images/diamonds/diamonds-A.svg");
+}
 
 .card.diamonds.K,
 .card.dK,

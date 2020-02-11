@@ -167,7 +167,10 @@ dealComputerCards();
 // plays player and computer card each round(WORKING)
 function playPlayerCard() {
   playerCard = playerDeck.shift();
-  pPlayedCard.classList.add(playerCard.cardClass);
+  // pPlayedCard.setAttribute('class', 'player-card');
+  // pPlayedCard.setAttribute('class', 'card');
+  // pPlayedCard.setAttribute('class', playerCard.cardClass);
+  pPlayedCard.setAttribute('class', `player-card card ${playerCard.cardClass}`);
   console.log(pPlayedCard)
   return playerCard;
 }
@@ -175,7 +178,8 @@ console.log(playerCard)
 
 function playComputerCard() {
   computerCard = computerDeck.shift();
-  cPlayedCard.classList.add(computerCard.cardClass);
+  cPlayedCard.setAttribute('class', `computer-card card ${computerCard.cardClass}`);
+  // cPlayedCard.setAttribute('class', computerCard.cardClass);
   console.log(cPlayedCard)
   return computerCard;
 }
@@ -198,15 +202,15 @@ function compareCards() {
   } else if (playerCard.cardNum > computerCard.cardNum) {
     console.log('player')
     playerScore++;
+    // computerScore--;
     decRWinner.innerText = 'Humans';
     pScore.innerText = playerScore;
-    // computerScore--;
   } else if (computerCard.cardNum > playerCard.cardNum){
     console.log('computer')
     computerScore++;
+    // playerScore--;
     decRWinner.innerText = 'Goblins';
     cScore.innerText = computerScore;
-    // playerScore--;
   }
 }
 
