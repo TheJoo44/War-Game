@@ -49,6 +49,7 @@ const sfxPlayer = new Audio();
 
 bkgdMusic.volume = .2;
 
+const cardFace = document.createElement('img')
 
 
 /*----------Event Listeners--------------*/
@@ -209,16 +210,25 @@ function compareCards() {
   }
 }
 
+// function removeCardClass() {
+//   if (pPlayedCard.cardClass !== '' && cPlayedCard.cardClass !== '') {
+//   pPlayedCard.classList.remove(playerCard.cardClass);
+//   cPlayedCard.classList.remove(computerCard.cardClass);
+//   }
+// }
 
 
 
-// Show Win/lose Message(NOT TESTED)
+
+// Show Win/lose Message(WORKING)
 function gmWinner() {
   if (playerScore > computerScore) {
     winMsg.textContent = ('You Win');
+    winMsg.style.backgroundColor = 'var(--card-border)';
     return isGoing = false;
   } else {
     winMsg.textContent = ('You Lose');
+    winMsg.style.backgroundColor = 'var(--card-border)';
     return isGoing = false;
   }
 }
@@ -229,6 +239,7 @@ function playCards() {
   playPlayerCard();
   playComputerCard();
   compareCards();
+  // removeCardClass();
 }
 
 // What is needed?
