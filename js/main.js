@@ -5,6 +5,8 @@ let player;
 let computer;
 const battleSound = '/Users/jeremybirnbaum/code/projects/War-Game/audio/swordclash01.mp3';
 
+let warTemp = [];
+
 let isGoing = true;
 
 
@@ -12,10 +14,10 @@ let isGoing = true;
 /*----------App's State (Variables)-----------*/
 let playerDeck = [];
 let playerCard;
-let playerScore = 0;
+let playerScore = 26;
 let computerDeck = [];
 let computerCard;
-let computerScore = 0;
+let computerScore = 26;
 let roundWinner;
 let gameWinner;
 let bgmPlay = false
@@ -88,7 +90,7 @@ class Deck {
       // loops through cardNums array
       for (let it = 0; it < cardNums.length; it++){
         // pushes the num/suits of each new card to the deck array
-        console.log(cardNums[it], cardSuits[i])
+        // console.log(cardNums[it], cardSuits[i])
         const suit = cardSuits[i][0].toLowerCase();
         let name = "";
         if (cardNums[it] === 14) {
@@ -106,7 +108,7 @@ class Deck {
         }
         const cClass = suit + name;
 
-        console.log(suit + name)
+        // console.log(suit + name)
         this.deck.push(new Card(cardNums[it], cardSuits[i], cClass));
         // this.deck.push(`${cardNums[it]} of ${cardSuits[i]}`);
       }
@@ -165,60 +167,106 @@ dealComputerCards();
 
 
 // plays player and computer card each round(WORKING)
-function playPlayerCard() {
+function playPlayerCard(isWar) {
   playerCard = playerDeck.shift();
-  // pPlayedCard.setAttribute('class', 'player-card');
-  // pPlayedCard.setAttribute('class', 'card');
-  // pPlayedCard.setAttribute('class', playerCard.cardClass);
   pPlayedCard.setAttribute('class', `player-card card ${playerCard.cardClass}`);
-  console.log(pPlayedCard)
+  // console.log(pPlayedCard)
+  if (isWar) {
+    warTemp.push(playerCard)
+  }
   return playerCard;
 }
-console.log(playerCard)
+// console.log(playerCard)
 
-function playComputerCard() {
+function playComputerCard(isWar) {
   computerCard = computerDeck.shift();
   cPlayedCard.setAttribute('class', `computer-card card ${computerCard.cardClass}`);
-  // cPlayedCard.setAttribute('class', computerCard.cardClass);
-  console.log(cPlayedCard)
+  // console.log(cPlayedCard)
+        if (isWar) {
+          warTemp.push(computerCard)
+        }
   return computerCard;
 }
-console.log(computerCard)
+// console.log(computerCard)
 
 
 
 
-// compares the value of each card(WORKING)
+// compares the value of each card(NOT WORKING) Plays until one player has all cards
 function compareCards() {
-  if (computerDeck.length === 0 && playerDeck.length === 0) {
+  if (computerDeck.length === 0 || playerDeck.length === 0) {
     gmWinner()
   } else if (playerCard.cardNum === computerCard.cardNum) {
+    warTemp.push(playerCard, computerCard)
     console.log('equal')
+    console.log(warTemp);
     for (let i = 0; i < 4; i++) {
-      playPlayerCard();
-      playComputerCard();
+      playPlayerCard(true);
+      playComputerCard(true);
     }
     compareCards();
   } else if (playerCard.cardNum > computerCard.cardNum) {
     console.log('player')
-    playerScore++;
-    // computerScore--;
+    if (warTemp.length > 0) {
+      playerScore += warTemp.length;
+      computerScore -= warTemp.length;
+      playerDeck.push(...warTemp);
+      warTemp = [];
+    } else {
+      playerScore++;
+      computerScore--;
+      playerDeck.push(playerCard);
+      playerDeck.push(computerCard);
+    }
     decRWinner.innerText = 'Humans';
     pScore.innerText = playerScore;
-  } else if (computerCard.cardNum > playerCard.cardNum){
-    console.log('computer')
-    computerScore++;
-    // playerScore--;
-    decRWinner.innerText = 'Goblins';
     cScore.innerText = computerScore;
+  } else if (computerCard.cardNum > playerCard.cardNum){
+    console.log('computer') 
+      if (warTemp.length > 0) {
+        playerScore -= warTemp.length;
+        computerScore += warTemp.length;
+        computerDeck.push(...warTemp);
+        warTemp = [];
+      } else {
+        playerScore--;
+        computerScore++;
+        computerDeck.push(computerCard);
+        computerDeck.push(playerCard);
+      }
+      decRWinner.innerText = 'Goblins';
+      cScore.innerText = computerScore;
+    pScore.innerText = playerScore;
   }
+  console.log('Player: ', playerDeck.length)
+  console.log('Computer: ', computerDeck.length)
 }
 
-// function removeCardClass() {
-//   if (pPlayedCard.cardClass !== '' && cPlayedCard.cardClass !== '') {
-//   pPlayedCard.classList.remove(playerCard.cardClass);
-//   cPlayedCard.classList.remove(computerCard.cardClass);
+
+// // compares the value of each card(WORKING) Cycles through decks once
+// function compareCards() {
+//   if (computerDeck.length === 0 || playerDeck.length === 0) {
+//     gmWinner()
+//   } else if (playerCard.cardNum === computerCard.cardNum) {
+//     console.log('equal')
+//     for (let i = 0; i < 4; i++) {
+//       playPlayerCard();
+//       playComputerCard();
+//     }
+//     compareCards();
+//   } else if (playerCard.cardNum > computerCard.cardNum) {
+//     console.log('player')
+//     playerScore++;
+//     decRWinner.innerText = 'Humans';
+//     pScore.innerText = playerScore;
+//   } else if (computerCard.cardNum > playerCard.cardNum){
+//     console.log('computer')
+//     computerScore++;
+//     decRWinner.innerText = 'Goblins';
+//     cScore.innerText = computerScore;
 //   }
+//   console.log('Player: ', playerDeck.length)
+//   console.log('Computer: ', computerDeck.length)
 // }
 
 
