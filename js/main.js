@@ -3,7 +3,7 @@ const cardNums = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 const cardSuits = ["Hearts", "Clubs", "Diamonds", "Spades"];
 let player;
 let computer;
-const battleSound = "/Users/jeremybirnbaum/code/projects/War-Game/audio/swordclash01.mp3";
+const battleSound = "../War-Game/audio/swordclash01.mp3";
 
 let warTemp = [];
 
@@ -180,7 +180,9 @@ function playComputerCard(isWar) {
 
 // compares the value of each card(NOT WORKING) Plays until one player has all cards
 function compareCards() {
-  if (playerCard.cardNum === computerCard.cardNum) {
+  if (computerDeck.length === 0 && warTemp.length === 0 || playerDeck.length === 0 && warTemp.length === 0) {
+  gmWinner()
+  } else if (playerCard.cardNum === computerCard.cardNum) {
     warTemp.push(playerCard, computerCard);
     console.log("equal");
     console.log(warTemp);
@@ -203,8 +205,8 @@ function compareCards() {
   } else if (playerCard.cardNum > computerCard.cardNum) {
     console.log("player");
     if (warTemp.length > 0) {
-      playerScore += (warTemp.length / 2);
-      computerScore -= (warTemp.length / 2);
+      playerScore += Math.floor(warTemp.length / 2);
+      computerScore -= Math.floor(warTemp.length / 2);
       playerDeck.push(...warTemp);
       warTemp = [];
     } else {
@@ -221,8 +223,8 @@ function compareCards() {
   } else if (computerCard.cardNum > playerCard.cardNum) {
     console.log("computer");
     if (warTemp.length > 0) {
-      playerScore -= parseInt((warTemp.length / 2), 10);
-      computerScore += parseInt((warTemp.length / 2), 10);
+      playerScore -= Math.floor(warTemp.length / 2);
+      computerScore += Math.floor(warTemp.length / 2);
       computerDeck.push(...warTemp);
       warTemp = [];
     } else {
@@ -236,9 +238,7 @@ function compareCards() {
     console.log("Computer: ", computerDeck.length);
     cScore.innerText = computerScore;
     pScore.innerText = playerScore;
-  } else if ((computerDeck.length === 0 && warTemp.length === 0) || (playerDeck.length === 0 && warTemp.length === 0)) {
-   gmWinner()
- } 
+  }
 }
 
 // // compares the value of each card(WORKING) Cycles through decks once
