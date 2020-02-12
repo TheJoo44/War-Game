@@ -6,7 +6,7 @@ let computer;
 const battleSound = "../War-Game/audio/swordclash01.mp3";
 
 let warTemp = [];
-
+let isWar;
 let isGoing = true;
 
 /*----------App's State (Variables)-----------*/
@@ -53,7 +53,7 @@ const cardFace = document.createElement("img");
 playBtn.addEventListener("click", playCards);
 replayBtn.addEventListener("click", replay);
 bgmBtn.addEventListener("click", bgmOnOff);
-// sfxBtn.addEventListener('click', sfxOnOff);
+sfxBtn.addEventListener('click', autoPlay);
 
 /*----------Functions--------------*/
 
@@ -180,26 +180,30 @@ function playComputerCard(isWar) {
 
 // compares the value of each card(NOT WORKING) Plays until one player has all cards
 function compareCards() {
-  if (computerDeck.length === 0 && warTemp.length === 0 || playerDeck.length === 0 && warTemp.length === 0) {
-  gmWinner()
-  } else if (playerCard.cardNum === computerCard.cardNum) {
-    warTemp.push(playerCard, computerCard);
+  // if (computerDeck.length === 0 || playerDeck.length === 0) {
+  //   gmWinner()
+  /*} else*/ 
+  if (playerCard.cardNum === computerCard.cardNum) {
+    if (!warTemp.includes(playerCard) && !warTemp.includes(computerCard)){
+      warTemp.push(playerCard, computerCard);
+    }
     console.log("equal");
     console.log(warTemp);
-    if (playerDeck.length > 4 && computerDeck.length > 4) {
-      for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++) {
+      if (playerDeck.length === 0) {
+        console.log("War Computer Win")
+        console.log("computerDeck Loop" + computerDeck.length)
+        gmWinner();
+      } else if (computerDeck.length === 0) {
+        console.log("War Player Win")
+        gmWinner();
+      } else { 
         playPlayerCard(true);
         playComputerCard(true);
       }
-    } else if (playerDeck.length < 4 || computerDeck.length < 4) {
-      const pFinalCards = playerDeck.length < 4 ? playerDeck.length : 4;
-      const cFinalCards = computerDeck.length < 4 ? computerDeck.length : 4;
-      for ( let i = 0; i < pFinalCards; i++) {
-        playPlayerCard(true);
-      }
-      for ( let i = 0; i < cFinalCards; i++) {
-        playComputerCard(true);
-      }  
+    }
+    if (isGoing === false) {
+      return;
     }
     compareCards();
   } else if (playerCard.cardNum > computerCard.cardNum) {
@@ -214,6 +218,10 @@ function compareCards() {
       computerScore--;
       playerDeck.push(computerCard);
       playerDeck.push(playerCard);
+      if (computerDeck.length === 0) {
+        console.log("Player Win")
+        gmWinner();
+      }
     }
     decRWinner.innerText = "Humans";
     console.log("Player: ", playerDeck.length);
@@ -232,6 +240,10 @@ function compareCards() {
       computerScore++;
       computerDeck.push(computerCard);
       computerDeck.push(playerCard);
+    if (playerDeck.length === 0) {
+      console.log("Computer Win")
+      gmWinner();
+    }
     }
     decRWinner.innerText = "Goblins";
     console.log("Player: ", playerDeck.length);
@@ -270,11 +282,11 @@ function compareCards() {
 
 // Show Win/lose Message(WORKING)
 function gmWinner() {
-  if (playerScore >= 52) {
+  if (computerDeck.length === 0) {
     winMsg.textContent = "You Win";
     winMsg.style.backgroundColor = "var(--card-border)";
     return (isGoing = false);
-  } else if (computerScore >= 52) {
+  } else if (playerDeck.length === 0) {
     winMsg.textContent = "You Lose";
     winMsg.style.backgroundColor = "var(--card-border)";
     return (isGoing = false);
@@ -283,7 +295,7 @@ function gmWinner() {
 
 // Play button function(Click-WORKING, Sounds-WORKING, Dealing-WORKING, Compare-WORKING)
 function playCards() {
-  playSounds();
+  // playSounds();
   playPlayerCard();
   playComputerCard();
   compareCards();
@@ -309,8 +321,15 @@ function bgmOnOff() {
 }
 
 // SoundFX on/off(NOT WORKING)
-// function sfxOnOff(name) {
+// function sfxOnOff() {
 //   console.log("SFX On/Off");
 //   sfxPlay ? battleSound.pause() : battleSound.play();
 //   sfxPlay = !sfxPlay;
 // }
+
+
+function autoPlay() {
+  while (playerDeck.length > 0 && computerDeck.length > 0) {
+    playBtn.click()
+  }
+}
