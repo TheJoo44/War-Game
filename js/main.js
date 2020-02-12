@@ -178,7 +178,7 @@ function playComputerCard(isWar) {
 }
 // console.log(computerCard)
 
-// compares the value of each card(NOT WORKING) Plays until one player has all cards
+// compares the value of each card(WORKING) Plays until one player has all cards
 function compareCards() {
   // if (computerDeck.length === 0 || playerDeck.length === 0) {
   //   gmWinner()
@@ -253,7 +253,7 @@ function compareCards() {
   }
 }
 
-// // compares the value of each card(WORKING) Cycles through decks once
+// compares the value of each card(WORKING) Cycles through decks once
 // function compareCards() {
 //     if (computerDeck.length === 0 || playerDeck.length === 0) {
 //     gmWinner()
