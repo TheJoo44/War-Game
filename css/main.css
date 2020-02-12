@@ -217,7 +217,7 @@ body{
   color: var(--word-color);
 }
 
-.sfx-toggle {
+/* .sfx-toggle {
   grid-area: 3 / 2;
   align-self: center;
   justify-self: center;
@@ -227,7 +227,7 @@ body{
   background-position: center;
   background-size: cover;
   color: var(--word-color);
-}
+} */
 
 .win-msg {
   grid-row: 2;
