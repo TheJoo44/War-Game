@@ -47,12 +47,14 @@ body{
   grid-column: 1 / span 7;
   border: 3px solid var(--card-border);
   background-color: rgb(133, 115, 76);
+  font-weight: bold;
   width: 90%;
+  height: 75%;
   margin: 0 auto;
   color: var(--word-color);
   font-family: 'Cinzel Decorative', cursive;
-  font-weight: bold;
   padding: 0 10px;
+  text-align: center;
 }
 
 #container {
