@@ -141,7 +141,7 @@ body{
   border-radius: 15%;
   grid-area:  2 / 6;
   height: 80%;
-  width: 50%;
+  width: 60%;
   justify-self: center;
   align-self: center;
   color: var(--word-color);
