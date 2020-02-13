@@ -80,7 +80,6 @@ class Deck {
     for (let i = 0; i < cardSuits.length; i++) {
       // loops through cardNums array
       for (let it = 0; it < cardNums.length; it++) {
-        // pushes the num/suits of each new card to the deck array
         // console.log(cardNums[it], cardSuits[i])
         const suit = cardSuits[i][0].toLowerCase();
         let name = "";
@@ -98,32 +97,22 @@ class Deck {
           name = "10";
         }
         const cClass = suit + name;
-
-        // console.log(suit + name)
+        // pushes the num/suits of each new card to the deck array
         this.deck.push(new Card(cardNums[it], cardSuits[i], cClass));
-        // this.deck.push(`${cardNums[it]} of ${cardSuits[i]}`);
       }
     }
     return this.deck;
   }
 }
+
 // assigns the newly created deck array to the deck1 variable
 let deck1 = new Deck();
+
 // calls the function to create the newDeck inside the deck array
 deck1.newDeck(cardNums, cardSuits);
 
 // Defines the shuffledDeck array
 let shuffledDeck1;
-
-// What does it do?
-// function init() {
-//   scores = {
-//     p: 0,
-//     c: 0
-//   }
-//   dealPlayerCards()
-//   dealComputerCards()
-// }
 
 // defines shuffledDeck1 as the shuffleDeck() with deck1.deck as a parameter
 shuffledDeck1 = shuffleDeck(deck1.deck);
@@ -156,13 +145,11 @@ dealComputerCards();
 function playPlayerCard(isWar) {
   playerCard = playerDeck.shift();
   pPlayedCard.setAttribute("class", `player-card card ${playerCard.cardClass}`);
-  // console.log(pPlayedCard)
   if (isWar) {
     warTemp.push(playerCard);
   }
   return playerCard;
 }
-// console.log(playerCard)
 
 function playComputerCard(isWar) {
   computerCard = computerDeck.shift();
@@ -170,13 +157,11 @@ function playComputerCard(isWar) {
     "class",
     `computer-card card ${computerCard.cardClass}`
   );
-  // console.log(cPlayedCard)
   if (isWar) {
     warTemp.push(computerCard);
   }
   return computerCard;
 }
-// console.log(computerCard)
 
 // // compares the value of each card(WORKING) Plays until one player has all cards
 // function compareCards() {
@@ -192,7 +177,6 @@ function playComputerCard(isWar) {
 //     for (let i = 0; i < 4; i++) {
 //       if (playerDeck.length === 0) {
 //         console.log("War Computer Win")
-//         console.log("computerDeck Loop" + computerDeck.length)
 //         gmWinner();
 //       } else if (computerDeck.length === 0) {
 //         console.log("War Player Win")
@@ -255,10 +239,22 @@ function playComputerCard(isWar) {
 
 // compares the value of each card(WORKING) Cycles through decks once
 function compareCards() {
-    if (computerDeck.length === 0 || playerDeck.length === 0) {
+    if (playerDeck.length === 0 || playerScore === 14|| computerScore === 14) {
     gmWinner()
   } else if (playerCard.cardNum === computerCard.cardNum) {
-    console.log('equal')
+    console.log('War')
+    for (let i = 0; i < 4; i++) {
+      if (playerDeck.length === 0) {
+        console.log("War Computer Win")
+        gmWinner();
+      } else if (computerDeck.length === 0) {
+        console.log("War Player Win")
+        gmWinner();
+      } else { 
+        playPlayerCard(true);
+        playComputerCard(true);
+      }
+    }
     for (let i = 0; i < 4; i++) {
       playPlayerCard();
       playComputerCard();
@@ -275,19 +271,20 @@ function compareCards() {
     decRWinner.innerText = 'Goblins';
     cScore.innerText = computerScore;
   }
-  console.log('Player: ', playerDeck.length)
-  console.log('Computer: ', computerDeck.length)
 }
 
-
-// Show Win/lose Message(WORKING)
+// Show Win/lose Message(WORKING) Change this logic when switching to longer game style(playerDeck.length === 0)
 function gmWinner() {
-  if (computerDeck.length === 0) {
+  if (playerScore > computerScore) {
     winMsg.textContent = "You Win";
     winMsg.style.backgroundColor = "var(--card-border)";
     return (isGoing = false);
-  } else if (playerDeck.length === 0) {
+  } else if (computerScore > playerScore) {
     winMsg.textContent = "You Lose";
+    winMsg.style.backgroundColor = "var(--card-border)";
+    return (isGoing = false);
+  } else if (playerScore === compueterScore) {
+    winMsg.textContent = "Stalemate";
     winMsg.style.backgroundColor = "var(--card-border)";
     return (isGoing = false);
   }
