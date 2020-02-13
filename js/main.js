@@ -239,7 +239,7 @@ function playComputerCard(isWar) {
 
 // compares the value of each card(WORKING) Cycles through decks once
 function compareCards() {
-    if (playerDeck.length === 0 || playerScore === 14|| computerScore === 14) {
+  if (playerDeck.length === 0 || playerScore > 13|| computerScore > 13) {
     gmWinner()
   } else if (playerCard.cardNum === computerCard.cardNum) {
     console.log('War')
@@ -255,10 +255,10 @@ function compareCards() {
         playComputerCard(true);
       }
     }
-    for (let i = 0; i < 4; i++) {
-      playPlayerCard();
-      playComputerCard();
-    }
+    // for (let i = 0; i < 4; i++) {
+    //   playPlayerCard();
+    //   playComputerCard();
+    // }
     compareCards();
   } else if (playerCard.cardNum > computerCard.cardNum) {
     console.log('player')
@@ -278,14 +278,17 @@ function gmWinner() {
   if (playerScore > computerScore) {
     winMsg.textContent = "You Win";
     winMsg.style.backgroundColor = "var(--card-border)";
+    winMsg.style.border = "4px groove var(--card-border)";
     return (isGoing = false);
   } else if (computerScore > playerScore) {
     winMsg.textContent = "You Lose";
     winMsg.style.backgroundColor = "var(--card-border)";
+    winMsg.style.border = "4px groove var(--card-border)";
     return (isGoing = false);
-  } else if (playerScore === compueterScore) {
+  } else if (playerScore === computerScore) {
     winMsg.textContent = "Stalemate";
-    winMsg.style.backgroundColor = "var(--card-border)";
+    winMsg.style.backgroundColor = "var(--btn-color)";
+    winMsg.style.border = "4px groove var(--card-border)";
     return (isGoing = false);
   }
 }
