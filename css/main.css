@@ -180,6 +180,12 @@ body{
   border: 3px groove var(--btn-color);
   border-radius: 15%;
   background-color: rgb(133, 115, 76);
+  outline: none;
+}
+
+.play-button:active {
+  background-color:  rgb(107, 92, 60);
+  transform: translateY(4px);
 }
 
 .play-button p {
@@ -200,6 +206,12 @@ body{
   background-color: rgb(133, 115, 76);
   font-family: 'Eater', cursive;
   color: var(--word-color);
+  outline: none;
+}
+
+.replay-button:active {
+  background-color:  rgb(107, 92, 60);
+  transform: translateY(4px);
 }
 
 .bgm-toggle {
@@ -212,6 +224,12 @@ body{
   border-radius: 15%;
   background-color: rgb(133, 115, 76);
   color: var(--word-color);
+  outline: none;
+}
+
+.bgm-toggle:active {
+  background-color:  rgb(107, 92, 60);
+  transform: translateY(4px);
 }
 
 /* .sfx-toggle {
@@ -234,7 +252,6 @@ body{
   width: 100%;
   align-self: center;
   justify-self: center;
-  margin-bottom: 100px;
 }
 
 .winLose {
