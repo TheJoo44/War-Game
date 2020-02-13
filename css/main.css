@@ -180,9 +180,6 @@ body{
   border: 3px groove var(--btn-color);
   border-radius: 15%;
   background-color: rgb(133, 115, 76);
-  /* background-image: url("imgs/main.png");
-  background-position: center;
-  background-size: cover; */
 }
 
 .play-button p {
@@ -237,6 +234,7 @@ body{
   width: 100%;
   align-self: center;
   justify-self: center;
+  margin-bottom: 100px;
 }
 
 .winLose {
@@ -249,7 +247,7 @@ body{
   z-index: 10;
   position: relative;
   font-family: 'Cinzel Decorative', cursive;
-  /* padding: 20px; */
+  padding-top: 20px;
 }
 
 .flip-horz {
