@@ -90,7 +90,7 @@ body{
   border: 3px solid var(--card-border);
   border-radius: 15%;
   grid-area:  2 / 4;
-  height: 75%;
+  height: 65%;
   width: 50%;
   justify-self: center;
   align-self: center;
