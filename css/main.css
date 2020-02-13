@@ -45,6 +45,8 @@ body{
 footer {
   border: 3px solid var(--card-border);
   background-color: rgb(133, 115, 76);
+  justify-items: center;
+  align-items: center;
 }
 
 footer p {
@@ -274,7 +276,7 @@ footer p {
   justify-self: center;
   align-self: center;
   z-index: 10;
-  /* position: relative; */
+  position: relative;
   font-family: 'Cinzel Decorative', cursive;
   padding-top: 20px;
 }
