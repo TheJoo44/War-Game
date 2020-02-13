@@ -4,17 +4,17 @@
 This is the card game War.  Each player plays a card, the higher of the two cards wins and puts both cards into their deck.  If the card values are equal, each player plays three cards face down then one card face up.  Whichever card is higher wins and puts all of the cards in their hand.  The first player to get all the cards wins the game.  While the logic to play this game in the browser is included in the code and is functional, it was determined that it would take too long to play this way for a browser game.  For this game, whoever has the highest score once all 26 cards have been played is the winner.
 
 ## Game Images
-![Image Description]()
+Main Screen
+![Main Screen](./css/imgs/Main-screen.png)
 
 
+You Win
+![You Win](./css/imgs/You-win.png)
 
+You lose
+![You Lose](./css/imgs/You-lose.png)
 
-
-
-
-
-
-
+Wireframe
 ![Image Description](./css/imgs/War-Wireframe.jpg)
 
 ## Technology Used
