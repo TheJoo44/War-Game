@@ -277,18 +277,18 @@ function compareCards() {
 function gmWinner() {
   if (playerScore > computerScore) {
     winMsg.textContent = "You Win";
-    winMsg.style.backgroundColor = "var(--card-border)";
-    winMsg.style.border = "4px groove var(--card-border)";
+    winMsg.style.backgroundColor = "var(--btn-color)";
+    winMsg.style.border = "4px groove black";
     return (isGoing = false);
   } else if (computerScore > playerScore) {
     winMsg.textContent = "You Lose";
     winMsg.style.backgroundColor = "var(--card-border)";
-    winMsg.style.border = "4px groove var(--card-border)";
+    winMsg.style.border = "4px groove black";
     return (isGoing = false);
   } else if (playerScore === computerScore) {
     winMsg.textContent = "Stalemate";
     winMsg.style.backgroundColor = "var(--btn-color)";
-    winMsg.style.border = "4px groove var(--card-border)";
+    winMsg.style.border = "4px groove black";
     return (isGoing = false);
   }
 }
