@@ -250,6 +250,18 @@ body{
   transform: translateY(4px);
 }
 
+/* .sfx-toggle {
+  grid-area: 3 / 2;
+  align-self: center;
+  justify-self: center;
+  height: 50px;
+  width: 50px;
+  background-image: url("imgs/speakerloud.png");
+  background-position: center;
+  background-size: cover;
+  color: var(--word-color);
+} */
+
 .win-msg {
   grid-row: 1;
   grid-column-start: 3;

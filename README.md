@@ -24,6 +24,10 @@ JavaScript
 
 https://thejoo44.github.io/War-Game/
 
+## Next Steps
+1. SFX button functionality
+2. Different deck and background images
+
 ## Pseudocode
 
 1. define constants
