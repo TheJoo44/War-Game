@@ -1,44 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battle for the Realm</title>
-  <link href="https://fonts.googleapis.com/css?family=Bangers|Cinzel+Decorative|Eater|Lacquer|Special+Elite" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bangers|Cinzel+Decorative|Eater|Lacquer|Special+Elite"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/imgs/card-deck-css/css/cardstarter.css">
   <link rel="stylesheet" href="css/main.css">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script defer src="js/main.js"></script>
 </head>
-<body>
-  <header>
-    <h1>Battle for the Realm</h1>
-  </header>
-  <main id="container">
-    <div class="win-msg">
-      <p class="winLose"></p>
-    </div>
-    <div id="round-winner">
-      <p>Round Winner</p>
-      <p class="declare-r-winner"></p>
-    </div>
-    <div class="player-deck"></div>
-    <div class ="player-score">
-      <p>Score</p>
-      <p class="p-score"></p>
-    </div>
-    <div class="player-card card"></div>
-    <div class="computer-deck"></div>
-    <div class ="computer-score">
-      <p>Score</p>
-      <p class="c-score"></p>
-    </div>
-    <div class="computer-card card"></div>
-    <button class="play-button"><p>BATTLE!</p></button>
-    <button class="replay-button">Play Again</button>
-    <button class="bgm-toggle">BGM</button>
-    <audio id="bkgd-music" src="../War-Game/audio/cinematic-music-short.mp3" loop></audio>
-    <p class="rules">Instructions: Each player has 26 cards. Click the Battle button to play the game. Whoever has the highest card wins the hand.  Whichever player has the most points at the end of the game wins. Press the Play Again button to start a new game.  Press the BGM button to turn the background music on or off.</p>
-  </main>
+
+<body id="body-background">
+  <div class="main-container">
+    <header>
+      <h1>Battle for the Realm</h1>
+    </header>
+    <main id="container">
+      <div class="win-msg">
+        <p class="winLose"></p>
+      </div>
+      <div id="round-winner">
+        <p>Round Winner</p>
+        <p class="declare-r-winner"></p>
+      </div>
+      <div class="player-deck"></div>
+      <div class="player-score">
+        <p>Score</p>
+        <p class="p-score"></p>
+      </div>
+      <div class="player-card card"></div>
+      <div class="computer-deck"></div>
+      <div class="computer-score">
+        <p>Score</p>
+        <p class="c-score"></p>
+      </div>
+      <div class="computer-card card"></div>
+      <button class="play-button">
+        <p>BATTLE!</p>
+      </button>
+      <button class="replay-button">Play Again</button>
+      <!-- <button class="bgm-toggle">BGM</button> -->
+      <!-- <audio id="bkgd-music" src="../War-Game/audio/cinematic-music-short.mp3" loop></audio> -->
+      <p class="rules">Instructions: Each player has 26 cards. Click the Battle button to play the game. Whoever has the
+        highest card wins the hand. Whichever player has the most points at the end of the game wins. Press the Play
+        Again button to start a new game.</p>
+    </main>
+    <section class="players">
+      <h3 class="choose-players">Choose Players</h3>
+      <div class="player-box">
+        <button id="hg" class="player-button"><span
+            class="button-text">Human/Goblin</span></button>&nbsp&nbsp&nbsp<button id="ad" class="player-button"><span
+            class="button-text">Angel/Demon</span></button>&nbsp&nbsp&nbsp<button id="eo" class="player-button"><span
+            class="button-text">Elf/Orc</span></button>
+      </div>
+    </section>
+  </div>
 </body>
+
 </html>

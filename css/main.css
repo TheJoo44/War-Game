@@ -17,6 +17,11 @@ font-family: 'Cinzel Decorative', cursive; */
   --btn-color: #948159;
 }
 
+.main-container {
+  margin: auto auto;
+  height: 100vh;
+}
+
 header {
   height: 75px;
   width: 100%;
@@ -37,6 +42,9 @@ body{
   height: 100vh;
   align-items: center;
   justify-items: center;
+}
+
+#body-background {
   background: url("imgs/battlefield3.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -54,7 +62,7 @@ body{
   margin: 0 auto;
   color: var(--word-color);
   font-family: 'Cinzel Decorative', cursive;
-  padding: 0 10px;
+  padding: 15px 10px 0 10px;
   text-align: center;
 }
 
@@ -64,7 +72,7 @@ body{
   width: 1424px;
   grid-template-columns: 50px 2fr 3fr 1fr 3fr 2fr 1fr;
   grid-template-rows: 1fr 3fr 1fr 1fr;
-  margin: 0 auto;
+  margin: auto auto;
 }
 
 #round-winner {
@@ -232,7 +240,7 @@ body{
   transform: translateY(4px);
 }
 
-.bgm-toggle {
+/* .bgm-toggle {
   grid-area: 3 / 1;
   align-self: center;
   justify-self: center;
@@ -243,12 +251,12 @@ body{
   background-color: rgb(133, 115, 76);
   color: var(--word-color);
   outline: none;
-}
+} */
 
-.bgm-toggle:active {
+/* .bgm-toggle:active {
   background-color:  rgb(107, 92, 60);
   transform: translateY(4px);
-}
+} */
 
 .win-msg {
   grid-row: 1;
@@ -260,7 +268,7 @@ body{
   justify-self: center;
   margin: 0;
   position: absolute;
-  left: 320px;
+  left: 390px;
   top: 80px;
   z-index: 10;
 }
@@ -278,4 +286,43 @@ body{
 
 .flip-horz {
   transform: scaleX(-1);
+}
+
+.players {
+  font-size: 1rem;
+  color:  var(--word-color);
+  font-family: 'Lacquer', sans-serif;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  letter-spacing: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.player-button {
+  justify-self: center;
+  align-self: center; 
+  border: 3px groove var(--btn-color);
+  border-radius: 15%;
+  background-color: rgb(133, 115, 76);
+  outline: none;
+  font-size: 1.5rem;
+}
+
+.player-button:active {
+  background-color:  rgb(107, 92, 60);
+  transform: translateY(4px);
+}
+
+.button-text {
+  padding: 15px;
+}
+
+.choose-players {
+  font-size: 2rem;
+}
+
+.player-box {
+  width: 50vw;
+  margin: 0 22vw;
 }
